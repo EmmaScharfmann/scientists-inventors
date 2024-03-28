@@ -1,0 +1,24 @@
+# Ignore folders:
+data/
+other_files/
+test/
+Errors/
+Names/
+Results/
+
+# Ignore checkpoints
+.ipynb_checkpoints/
+
+# Ignore .npy, .json, .tsv,  .csv, .dta  files
+*.json 
+*.tsv
+*.csv
+*.dta
+*.npy 
+*.xlsx
+*.sav 
+
+# Ignore specific files
+*.active_inventors_05
+*.active_authors_05
+database.txt
