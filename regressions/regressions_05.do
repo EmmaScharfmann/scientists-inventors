@@ -63,7 +63,7 @@ summarize top_5_percent number_active_gks number_career_gks number_only_authors 
 
 * load data 
 
-use /home/fs01/spec1142/Emma/GateKeepers/science_gks_cites_novelty05.dta, replace
+use /home/fs01/spec1142/Emma/GateKeepers/regressions/science_papers_cites_novelty_05.dta, replace
 
 rename backward_cites science_citations
 
