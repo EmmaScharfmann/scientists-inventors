@@ -1,5 +1,7 @@
 # This folder describes how to download and flatten OpenAlex data and how to create, load and index Postgres tables from OpenAlex flat files. 
 
+This folder provides the code to create the tables "works_OpenAlex", "works_authors_OpenAlex", "authors_OpenAlex", "institutions_OpenAlex" describe in the database schema. 
+
 * The jupyter notebook "Download_OpenAlex.ipynb" describes how to download, flatten OpenAlex data and how to create, load and index Postgres tables.
     * the first section "Download OpenAlex raw data" provides the bash code to download the raw OpenAlex data. Note that it can also be found on OpenAlex website.
     * the section "OpenAlex institutions" provides the code to flatten the institution data downlaoded from OpenAlex, and to save the flat files. Then, it provides the code to create a postgres table to host the institution data. Finally, it provides the code to load the data into the postgres database, to index the table, and to visualize the data from Postgres.
@@ -10,5 +12,6 @@
 * The python file "flatten_data_works.py" flatten the works from OpenAlex and save the flat files.
 
 * Note that downloading a full OpenAlex snapshot requires a considerable memory (~300GB before loading the data to the database). 
-* Note that running this section requires an access to a postgres database. The database username and password are store in the text file "database.txt"
+* Note that running this section requires access to a postgres database. The database username and password are store in the text file "database.txt"
 * Note that the data needs to be loaded to the tables before the tables are indexed. Otherwise, it increases the loading time.
+
