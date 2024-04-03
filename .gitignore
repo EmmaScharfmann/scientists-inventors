@@ -5,6 +5,10 @@ test/
 Errors/
 Names/
 Results/
+run_SI_dataset/Errors/
+run_SI_dataset/Monitor/
+run_SI_dataset/Names/
+run_SI_dataset/Results/
 
 # Ignore checkpoints
 .ipynb_checkpoints/
