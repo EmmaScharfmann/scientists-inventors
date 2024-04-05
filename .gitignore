@@ -21,8 +21,12 @@ run_SI_dataset/Results/
 *.npy 
 *.xlsx
 *.sav 
+*.out
 
 # Ignore specific files
 *.active_inventors_05
 *.active_authors_05
 database.txt
+regressions/regressions_by_year_02.do
+regressions/regressions_02.do
+regressions/regressions_05_edu_comp.do
