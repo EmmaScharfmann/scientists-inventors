@@ -13,7 +13,8 @@ This github provides the code to generate the statistics, tables and figures des
 * The folder "figures" provides the code to generate the descriptive figures and statitstics about the SI dataset. It provides the code to query all relevant information on SI's papers and patents (dates, institutions, geographic data, field, cpcs, type of affiliations...), the figures SX to SX, as well as figure 1.
 * The folder "regressions" provides the code to generate the files used in the regressions, as well as the do files to run the regressions and the regression's results.
 
-Note that (almost) all the codes require a username and password to query a postgres database (created based on the code provided in the folders "download_OpenAlex" and "download_PatentsView"). The schema of the postgres database used in the provided codes is described in the ![database_schema](database_schema.png)
+Note that (almost) all the codes require a username and password to query a postgres database (created based on the code provided in the folders "download_OpenAlex" and "download_PatentsView"). The schema of the postgres database used in the provided codes is described in the [database_schema](database_schema.png).
+![database_schema](database_schema.png)
 
 
 
