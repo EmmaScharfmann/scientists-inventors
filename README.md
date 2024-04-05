@@ -14,6 +14,9 @@ This github provides the code to generate the statistics, tables and figures des
 * The folder "regressions" provides the code to generate the files used in the regressions, as well as the do files to run the regressions and the regression's results.
 
 Note that (almost) all the codes require a username and password to query a postgres database (created based on the code provided in the folders "download_OpenAlex" and "download_PatentsView"). The schema of the postgres database used in the provided codes is described in the [database_schema](database_schema.png).
+
+Below the database schema: 
+
 ![database_schema](database_schema.png)
 
 

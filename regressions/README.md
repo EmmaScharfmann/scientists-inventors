@@ -9,4 +9,7 @@ We describes the statistical correlation between being an SI (people publishing 
 * The file "regressions_by_year_05.tex" and "regressions_by_year_02.tex" provides the results of the career level regressions for the high and low thresholds.
 
 Note that different level of field controls can be used as robustness check in the regressions (more or less granular concepts or cpcs). 
+
+Below the main figure and results of this section: 
+
 ![average_citations_novelty](average_citations_novelty.png)
