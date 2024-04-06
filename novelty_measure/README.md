@@ -3,6 +3,8 @@
 The novelty measure used in our project corresponds to a score between -1 and 1 which represents the opposite of the similarity between the paper (or patent) abstracts and the abstracts of the papers (or patents) published (or granted) the 5 years before their publication (or grant) year. For each paper (resp patent), we calculate the cosine similarity between the embedded paper abstract (resp patent) and the embedded abstracts of all papers published (resp patents granted). Then, we take the average cosine similarity, which gives a score between -1 and 1. 
 The highest this score is, the more similar the paper (or patent) is to prior literature and the less novel it is. Therefore, we define the novelty score as the opposite of the average cosine similarity between the abstract and the abstracts published in the 5 previous years. 
 
+This section requires to have the full data (OpenAlex + PatentsView) loaded in a Postgres database (username and password are required to run the codes, please see folder download_OpenAlex and download_PatentsView). It also requires to have the patent and paper titles and abstracted encoded with a pre-trained model (please see folder text_encoding). 
+
 Distribution of the paper average similarity scores: ![paper novelty](paper_novelty.png)
 Distribution of the patent average similarity scores: ![patent novelty](patent_novelty.png)
 
