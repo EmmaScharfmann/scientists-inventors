@@ -10,4 +10,4 @@ This section requires the full data (OpenAlex + PatentsView) to be loaded into a
 
 Below, the correlation matrix of the features used in the random forest: 
 
-![](correlation_matrix.png)
+![](figures/correlation_matrix.png)

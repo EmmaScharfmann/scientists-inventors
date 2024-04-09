@@ -5,8 +5,6 @@ The highest this score is, the more similar the paper (or patent) is to prior li
 
 This section requires the full data (OpenAlex + PatentsView) to be loaded into a Postgres database (username and password are required to run the codes, please see folder download_OpenAlex and download_PatentsView). It also requires the patent and paper titles and abstracted to be encoded with a pre-trained model (please see folder text_encoding). 
 
-Distribution of the paper average similarity scores: ![paper novelty](paper_novelty.png)
-Distribution of the patent average similarity scores: ![patent novelty](patent_novelty.png)
 
 * The notebook "novelty_measure.ipynb" provides the code to generate the novelty measure based on the papers and patents hosted in the postgres database.
     * The first section provides the code to generate the patent novelty and the second section provides the code to generate the paper novelty
@@ -17,4 +15,10 @@ Distribution of the patent average similarity scores: ![patent novelty](patent_n
 *  The figures "paper_novelty.jpg" and "patent_novelty.jpg" illustrate the distribution of the novelty scores. 
 
 * Note that running this section requires access to a postgres database. The database username and password are stored in the text file "database.txt"
-* Note that taking the average of the embedding and then the dot product is equivalent to taking the dot products and then the average of the dot products by linearity. 
+* Note that taking the average of the embedding and then the dot product is equivalent to taking the dot products and then the average of the dot products by linearity.
+
+
+Distribution of the paper average similarity scores: ![paper novelty](paper_novelty.png)
+
+
+Distribution of the patent average similarity scores: ![patent novelty](patent_novelty.png)
