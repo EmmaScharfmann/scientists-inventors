@@ -73,7 +73,7 @@ def assignee_GK(i):
     df = pd.DataFrame()
     df['patent_id'] = list_patent_ids
     df['assignee_type'] = list_types
-    df.to_csv(main_path + "figures/data/type_assignees_" + str(i) + ".tsv" , sep = "\t" , index = False)
+    df.to_csv(main_path + "data_description/data/type_assignees_" + str(i) + ".tsv" , sep = "\t" , index = False)
     
 
 
@@ -99,5 +99,5 @@ if __name__ == '__main__':
 
 
 
-df_types = pd.concat([ pd.read_csv(file , sep = "\t") for file in glob.glob(main_path + "figures/data/type_assignees_*") ] )
-df_types.to_csv(main_path + "figures/data/type_assignees.tsv" , sep = "\t", index= False)
+df_types = pd.concat([ pd.read_csv(file , sep = "\t") for file in glob.glob(main_path + "data_description/data/type_assignees_*") ] )
+df_types.to_csv(main_path + "data_description/data/type_assignees.tsv" , sep = "\t", index= False)

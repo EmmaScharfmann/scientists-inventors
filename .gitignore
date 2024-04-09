@@ -30,3 +30,8 @@ database.txt
 regressions/regressions_by_year_02.do
 regressions/regressions_02.do
 regressions/regressions_05_edu_comp.do
+
+# include validation files 
+!validation/*
+!validation/automated_validation_GoogleScholar/*
+!validation/manual_validation_GoogleScholar/*

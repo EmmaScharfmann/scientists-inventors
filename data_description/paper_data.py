@@ -18,7 +18,7 @@ df = pd.read_csv(main_path + "gatekeepers_intermediate_clean_v5.tsv", sep = "\t"
     
 ## load dictionary with the inventor data already generated 
 try:
-    f = open(main_path + "figures/data/dic_papers.json","r")
+    f = open(main_path + "data_description/data/dic_papers.json","r")
     import json
     dic_done = json.load(f)
 
@@ -137,14 +137,14 @@ def get_data_gatekeepers(i):
             if count % 5000 == 0:
                 import json
                 json = json.dumps(dic)
-                f = open(main_path + "figures/data/dic_dates_institutions_concepts_" + str(i) + ".json","w")
+                f = open(main_path + "data_description/data/dic_dates_institutions_concepts_" + str(i) + ".json","w")
                 f.write(json)
                 f.close()
 
     ## save final file
     import json
     json = json.dumps(dic)
-    f = open(main_path + "figures/data/dic_dates_institutions_concepts_" + str(i) + ".json","w")
+    f = open(main_path + "data_description/data/dic_dates_institutions_concepts_" + str(i) + ".json","w")
     f.write(json)
     f.close()
     
@@ -178,7 +178,7 @@ dic_papers_sm = {}
 
 for i in range(workers):
     
-    f = open(main_path + "figures/data/dic_dates_institutions_concepts_" + str(i) + ".json","r")
+    f = open(main_path + "data_description/data/dic_dates_institutions_concepts_" + str(i) + ".json","r")
     import json
     dic = json.load(f)
     
@@ -192,6 +192,6 @@ print(len(dic_papers_sm))
 ## save the dictionary
 import json
 json = json.dumps(dic_papers_sm)
-f = open(main_path + "figures/data/dic_papers.json","w")
+f = open(main_path + "data_description/data/dic_papers.json","w")
 f.write(json)
 f.close()
