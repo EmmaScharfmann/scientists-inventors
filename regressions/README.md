@@ -1,6 +1,6 @@
 # This folder describes how the regressions are done. 
 
-We describe the statistical correlation between being an SI (people publishing and patenting) and the number of citations and the novelty (described in folder novelty_measure) of the SI papers and patents in comparison with pure scientists and pure inventors. 
+We describe the statistical correlations between being an SI (people publishing and patenting) and the number of citations and the novelty (described in folder novelty_measure) of the SI papers and patents in comparison with pure scientists and pure inventors. 
 
 This section requires the OpenAlex data to be loaded into a Postgres database (username and password are required to run the codes, please see folder download_OpenAlex) as well as PatentsView flat files (please see folder download_PatentsView).  It also requires the novelty measure (please see folder novelty_measure), and the active years of the SIs and the patent assignee types (please see folder "data_description").
 
