@@ -7,7 +7,7 @@ This folder provides the code to create all PatentsView tables described in the 
     * the first section provides the code to download, unzip and save PatentsView tables. The links to download the different tables can be found on PatentsView website: https://patentsview.org/download/data-download-tables. 
     * the next section "Load data in the database" provides the code to create tables, load the data into the tables and index the tables. For each flat file downloaded from PatentsView website, a new Postgres table needs to be created. Then, the table needs to be loaded onto the table. Finally, the table needs to be indexed.
     * the section query gives an example of an SQL query, and provides the code to test the newly created tables.
-    * the last section provides the code to download Patstat data from Google Cloud. Note that this section requires an access to Postgres data and a Google Cloud key.
+    * the last section provides the code to download Patstat data from Google Cloud. Note that this section requires access to Postgres data and a Google Cloud key.
 
 
 * Note that PatentsView ids may change between each update. 

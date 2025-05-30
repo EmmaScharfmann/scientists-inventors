@@ -2,7 +2,7 @@
 
 Here, we provide the code to create the SI dataset.
 
-This section requires the full data (OpenAlex + PatentsView) to be loaded in a Postgres database (username and password are required to run the codes, please see folder download_OpenAlex and download_PatentsView). It also requires the patent and paper titles and abstracted to be encoded with a pre-trained model (please see folder text_encoding), and the section "train_the_model" to be run to save the predictive classification models. 
+This section requires the full data (OpenAlex + PatentsView) to be loaded in a Postgres database (username and password are required to run the codes, please see folder download_OpenAlex and download_PatentsView). It also requires the patent and paper titles and abstracts to be encoded with a pre-trained model (please see folder text_encoding), and the section "train_the_model" to be run to save the predictive classification models. 
 
 * The jupyter notebook "SI_dataset.ipynb" provides the code to test the full SI identification process. The first section provides the code to generate the first and last name frequency dictionaries based on name frequency in PatentsView database. The next section provides the code to test the full SI identification process on a given last name. It provides examples of SIs named  "Doudna" or "Scharfmann". The third section describes how to run the full process on the entire databases. Finally, the last section provides the code to clean the SI dataset and to remove the inconsistencies. 
 

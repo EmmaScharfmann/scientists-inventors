@@ -4,13 +4,7 @@
 ######################## PATENTS ########################
 
 * load data
-use /home/fs01/spec1142/Emma/GateKeepers/regressions/patents_cites_novelty_05.dta, replace
-
-summarize cites
-local cites_patents_sd = 100/r(sd)
-
-summarize novelty
-local novelty_patents_sd = 100/r(sd)
+use /home/fs01/spec1142/Emma/GateKeepers/regressions/patents_cites_novelty_5yearswindow_05.dta, replace
 
 gen novelty_op = - novelty
 
@@ -22,23 +16,31 @@ rename only_inventor number_only_authors
 
 * cites 
 
-ppmlhdfe cites number_active_gks number_career_gks number_only_authors , absorb(i.year#i.cpc_class_int#i.assignee) 
+ppmlhdfe cites number_active_gks number_career_gks number_only_authors , absorb(i.year#i.cpc_class_int#i.assignee_id) 
 estimates store cites_patents
 summarize cites number_active_gks number_career_gks number_only_authors if e(sample)
 
 
 * novelty 
 
-reghdfe novelty_op number_active_gks number_career_gks number_only_authors , absorb(i.year#i.cpc_class_int#i.assignee) 
+reghdfe novelty_op number_active_gks number_career_gks number_only_authors , absorb(i.year#i.cpc_class_int#i.assignee_id) 
 estimates store novelty_patents
 summarize novelty_op number_active_gks number_career_gks number_only_authors if e(sample)
 
 
-* breakthrough 
+* self cites 
 
-ppmlhdfe top_5_percent number_active_gks number_career_gks number_only_authors , absorb(i.year#i.cpc_class_int#i.assignee) 
-estimates store top_5_percent_patents
-summarize top_5_percent number_active_gks number_career_gks number_only_authors if e(sample)
+reghdfe self_cites_prop number_active_gks number_career_gks number_only_authors , absorb(i.year#i.cpc_class_int#i.assignee_id) 
+estimates store self_cites_patents
+summarize self_cites_prop number_active_gks number_career_gks number_only_authors if e(sample)
+
+
+* age cites 
+
+reghdfe age_citation number_active_gks number_career_gks number_only_authors , absorb(i.year#i.cpc_class_int#i.assignee_id) 
+estimates store age_cites_patents
+summarize age_citation number_active_gks number_career_gks number_only_authors if e(sample)
+
 
 
 *************** robustness check with other cpc fixed effects ********************
@@ -63,18 +65,11 @@ summarize top_5_percent number_active_gks number_career_gks number_only_authors 
 
 * load data 
 
-use /home/fs01/spec1142/Emma/GateKeepers/regressions/science_papers_cites_novelty_05.dta, replace
+use /home/fs01/spec1142/Emma/GateKeepers/regressions/science_papers_cites_novelty_5yearswindow_05.dta, replace
 
 rename backward_cites science_citations
 
 gen novelty_op = - novelty
-
-
-summarize cites
-local cites_papers_sd = 100/r(sd)
-
-summarize novelty
-local novelty_papers_sd = 100/r(sd) 
 
 
 * cites 
@@ -90,11 +85,20 @@ estimates store novelty_papers
 summarize novelty_op number_active_gks number_career_gks number_only_authors if e(sample)
 
 
-* breakthrough
+* self cites 
 
-ppmlhdfe top_5_percent number_active_gks number_career_gks number_only_authors , absorb(i.pubyear#concept1_int#i.institution_int) 
-estimates store top_5_percent_papers
-summarize top_5_percent number_active_gks number_career_gks number_only_authors if e(sample)
+reghdfe self_cites_prop number_active_gks number_career_gks number_only_authors , absorb(i.pubyear#concept1_int#i.institution_int) 
+estimates store self_cites_papers
+summarize self_cites_prop number_active_gks number_career_gks number_only_authors if e(sample)
+
+
+* age cites 
+
+reghdfe mean_age_backward_cite number_active_gks number_career_gks number_only_authors , absorb(i.pubyear#concept1_int#i.institution_int) 
+estimates store age_cites_papers
+summarize mean_age_backward_cite number_active_gks number_career_gks number_only_authors if e(sample)
+
+
 
 
 
@@ -118,7 +122,7 @@ summarize top_5_percent number_active_gks number_career_gks number_only_authors 
 
 ######################## SAVE TABLES  ########################
 
-esttab cites_papers novelty_papers top_5_percent_papers cites_patents novelty_patents top_5_percent_patents using /home/fs01/spec1142/Emma/GateKeepers/regressions/level1_conf05_5percent.tex, mtitles("Papers citations" "Papers novelty" "Top 5% papers citations" "Patents citations" "Patents novelty" "Top 5% patent citations") keep(number_active_gks number_career_gks number_only_authors ) star(* 0.10 ** 0.05 *** 0.01) collabels(none) label stats(r2 N , fmt(%9.4f %9.0f %9.0fc) labels("R-squared" "Number of observations" )) plain b(%9.4f) se(%9.4f) noabbrev se nonumbers lines parentheses replace fragment
+esttab cites_papers novelty_papers self_cites_papers age_cites_papers cites_patents novelty_patents self_cites_patents age_cites_patents using /home/fs01/spec1142/Emma/GateKeepers/regressions/level1_conf05_5percent_8models_5yearswindow.tex, mtitles("Papers citations" "Papers novelty" "Papers proportion self cites" "Papers mean age cites" "Patents citations" "Patents novelty" "Patents proportion self cites" "Patents mean age cites") keep(number_active_gks number_career_gks number_only_authors ) star(* 0.10 ** 0.05 *** 0.01) collabels(none) label stats(r2 N , fmt(%9.4f %9.0f %9.0fc) labels("R-squared" "Number of observations" )) plain b(%9.4f) se(%9.4f) noabbrev se nonumbers lines parentheses replace fragment
 
 
 
@@ -155,70 +159,70 @@ esttab cites_papers novelty_papers top_5_percent_papers cites_patents novelty_pa
 ######################## PATENTS ########################
 
 * load data
-use /home/fs01/spec1142/Emma/GateKeepers/regressions/patents_cites_novelty_05.dta, replace
-
-summarize cites
-local cites_patents_sd = 100/r(sd)
-
-summarize novelty
-local novelty_patents_sd = 100/r(sd)
-
-gen novelty_op = - novelty
-
-rename active_gk number_active_gks
-rename career_gk number_career_gks
-rename only_inventor number_only_authors
-
-gen number_SIs = number_active_gks + number_career_gks
-
-
-
-* cites 
-
-ppmlhdfe cites number_SIs number_only_authors , absorb(i.year#i.cpc_class_int#i.assignee) 
-estimates store cites_patents
-summarize cites number_SIs number_only_authors if e(sample)
-
-
-* novelty 
-
-reghdfe novelty_op number_SIs number_only_authors , absorb(i.year#i.cpc_class_int#i.assignee) 
-estimates store novelty_patents
-summarize novelty_op  number_SIs number_only_authors if e(sample)
-
-
-
-######################## PAPERS ################v
-
-
-* load data 
-
-use /home/fs01/spec1142/Emma/GateKeepers/regressions/science_papers_cites_novelty_05.dta, replace
-
-rename backward_cites science_citations
-
-gen novelty_op = - novelty
-
-
-summarize cites
-local cites_papers_sd = 100/r(sd)
-
-summarize novelty
-local novelty_papers_sd = 100/r(sd) 
-
-gen number_SIs = number_active_gks + number_career_gks
-
-* cites 
-ppmlhdfe cites number_SIs  number_only_authors , absorb(i.pubyear#concept1_int#i.institution_int) 
-estimates store cites_papers 
-summarize cites number_SIs number_only_authors if e(sample)
-
-
-* novelty 
-
-reghdfe novelty_op number_SIs number_only_authors , absorb(i.pubyear#concept1_int#i.institution_int) 
-estimates store novelty_papers
-summarize novelty_op  number_SIs number_only_authors if e(sample)
+*use /home/fs01/spec1142/Emma/GateKeepers/regressions/patents_cites_novelty_05.dta, replace
+*
+*summarize cites
+*local cites_patents_sd = 100/r(sd)
+*
+*summarize novelty
+*local novelty_patents_sd = 100/r(sd)
+*
+*gen novelty_op = - novelty
+*
+*rename active_gk number_active_gks
+*rename career_gk number_career_gks
+*rename only_inventor number_only_authors
+*
+*gen number_SIs = number_active_gks + number_career_gks
+*
+*
+*
+** cites 
+*
+*ppmlhdfe cites number_SIs number_only_authors , absorb(i.year#i.cpc_class_int#i.assignee) 
+*estimates store cites_patents
+*summarize cites number_SIs number_only_authors if e(sample)
+*
+*
+** novelty 
+*
+*reghdfe novelty_op number_SIs number_only_authors , absorb(i.year#i.cpc_class_int#i.assignee) 
+*estimates store novelty_patents
+*summarize novelty_op  number_SIs number_only_authors if e(sample)
+*
+*
+*
+*######################## PAPERS ################v
+*
+*
+** load data 
+*
+*use /home/fs01/spec1142/Emma/GateKeepers/regressions/science_papers_cites_novelty_05.dta, replace
+*
+*rename backward_cites science_citations
+*
+*gen novelty_op = - novelty
+*
+*
+*summarize cites
+*local cites_papers_sd = 100/r(sd)
+*
+*summarize novelty
+*local novelty_papers_sd = 100/r(sd) 
+*
+*gen number_SIs = number_active_gks + number_career_gks
+*
+** cites 
+*ppmlhdfe cites number_SIs  number_only_authors , absorb(i.pubyear#concept1_int#i.institution_int) 
+*estimates store cites_papers 
+*summarize cites number_SIs number_only_authors if e(sample)
+*
+*
+** novelty 
+*
+*reghdfe novelty_op number_SIs number_only_authors , absorb(i.pubyear#concept1_int#i.institution_int) 
+*estimates store novelty_papers
+*summarize novelty_op  number_SIs number_only_authors if e(sample)
 
 
 
