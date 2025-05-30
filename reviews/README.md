@@ -6,6 +6,8 @@ This section requires the OpenAlex data to be loaded into a Postgres database (u
 
 * The notebook "matching_PQRs" provides the code to link PQRs with non PQRs, as well as the code to generate the figure 2 of the main paper. The first section describes the code to match the PQRs with the non PQRs. The PQRs are matched on the year of their first paper, institution of their first paper, field and number of papers published in the 5 first years of their career (two files are created here: exact match or PQR with one fewer paper). The file is limited to the PQRs who patented in the 10 first years of their career and for which the institution is not missing. The second section provides the code plot figure 2 of the main paper, 
 
+* The notebook "more_reviews" provides the code to answer some other reviews: (1) add new novelty measures to the regression file as a robustness check of our novelty measure (2) add a flag for "strong PQRs" VS "weak PQRs" indicating if a PQR has many patents (or papers) or only one.
+  
 Note that different levels of confidence threshold can be used as robustness checks in the regressions.
 
 Below, the main figure and results of this section: 
