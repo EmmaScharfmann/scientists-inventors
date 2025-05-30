@@ -10,4 +10,4 @@ Note that different levels of confidence threshold can be used as robustness che
 
 Below, the main figure and results of this section: 
 
-![average_citations_novelty for matched PQRs](PQR-1descriptivebarchartaverage_citations_novelty.png)
+![average_citations_novelty for matched PQRs](PQR-1descriptivebarchart.png)
