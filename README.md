@@ -13,6 +13,7 @@ The order in which the codes should be run is the following:
 6. novelty_measure (can also be run after or before 4). 
 7. data_description
 8. regressions
+9. reviews
 
 
 * The folders "download_OpenAlex" and "download_PatentsView" provide the code to download the worldwide science publication database OpenAlex and the US patent database PatentsView.
@@ -22,7 +23,9 @@ The order in which the codes should be run is the following:
 * The folder "validation" provides the code used to validate the SI dataset against GoogleScholar and against the patent to paper citations. The manual and automated files generated to validate the SI dataset against GoogleScholar can be downloaded in this folder, as well as the code to generate figure SX.
 * The folder "novelty_measure" provides the code to generate our novelty measure. The distribution of the paper and patent novelty measure can be found in this folder.
 * The folder "data_description" provides the code to generate the descriptive figures and statitstics about the SI dataset. It provides the code to query all relevant information on SI's papers and patents (dates, institutions, geographic data, field, cpcs, type of affiliations...), the figures SX to SX, as well as main paper figures.
-* The folder "regressions" provides the code to generate the files used in the regressions, as well as the do files to run the regressions and the regression results.
+* The folder "regressions" provides the code to generate the files used in most of the regressions (regressions at the document level and career level), as well as the do files to run most of the regressions and the regression results.
+* The folder "reviews" provides the code to generate the files used in the remaining regressions (regressions where we match a PQR with a non PQR) added as part of the review process.
+
 
 Note that (almost) all the code requires a username and password to query a postgres database (created based on the code provided in the folders "download_OpenAlex" and "download_PatentsView"). The schema of the postgres database used in the provided code is described in the [database_schema](database_schema.png).
 
