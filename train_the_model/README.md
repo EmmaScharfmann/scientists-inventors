@@ -5,7 +5,7 @@ Here, we provide the code to create the training set (from a set of patent citin
 This section requires the full data (OpenAlex + PatentsView) to be loaded into a Postgres database (username and password are required to run the codes, please see folder download_OpenAlex and download_PatentsView). It also requires the patent and paper titles and abstracts to be encoded with a pre-trained model (please see folder text_encoding). 
 
 * the notebook "self_citations.ipynb" provides the code for the whole training process. The first section provides the code to query and identify patents and papers written by the same individual, using patent to paper citations. The second section provides the code to extend this dataset to more scientifically diverse papers, by including papers corresponding to the same ORCID, and therefore also written by the same individual. The third section provides the code to create the positive instances of the training set from this extended dataset, as well as the code to create the negative instances of the training set. The last section provides the code to train, evaluate and save the random forest and train on the training set created in the previous sections. The last section provides the code to generate the SX figures found in the appendix.
-* the figures can be found and downloaded into the folder "figures". 
+* the figures can be found and downloaded into the folder "figures". These correspond to figures S6, S8, S9, S10 and S11 of the SM. The data to reproduce the figures can be found in data_train_the_model as well as the weight of the two random forests.
 
 
 Below, the correlation matrix of the features used in the random forest: 
